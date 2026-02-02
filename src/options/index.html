@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - Epitech Calendar Sync</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="options-container">
+        <header class="options-header">
+            <h1>Epitech Calendar Sync</h1>
+            <p>Configuration de la synchronisation</p>
+        </header>
+
+        <main class="options-content">
+            <!-- Sync Period Section -->
+            <section class="settings-section">
+                <h2>Période à synchroniser</h2>
+                <div class="form-group">
+                    <label for="sync-start">Date de début</label>
+                    <select id="sync-start">
+                      <option value="today">Aujourd'hui</option>
+                      <option value="-1week">Il y a 1 semaine</option>
+                      <option value="-2weeks">Il y a 2 semaines</option>
+                      <option value="-1month">Il y a 1 mois</option>
+                      <option value="custom">Date personnalisée</option>
+                    </select>
+                    <input type="date" id="sync-start-custom" class="hidden">
+                </div>
+                <div class="form-group">
+                    <label for="sync-end">Date de fin</label>
+                    <select id="sync-end">
+                        <option value="+1month">+1 mois</option>
+                        <option value="+6months">+6 mois</option>
+                        <option value="+12months" selected>+12 mois</option>
+                        <option value="custom">Date personnalisée</option>
+                    </select>
+                    <input type="date" id="sync-end-custom" class="hidden">
+                </div>
+            </section>
+
+            <!-- Event Prefix Section -->
+            <section class="settings-section">
+                <h2>Format des événements</h2>
+                <div class="form-group">
+                    <label for="event-prefix">Préfixe des événements</label>
+                    <input type="text" id="event-prefix" placeholder="EPITECH - ">
+                    <p class="form-hint">Ce préfixe sera ajouté au début de chaque titre d'événement</p>
+                </div>
+            </section>
+
+            <!-- Auto Sync Section -->
+            <section class="settings-section">
+                <h2>Synchronisation automatique</h2>
+                <div class="form-group toggle-group">
+                    <label class="toggle-label">
+                      <span>Activer la sync automatique</span>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="auto-sync-enabled">
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                </div>
+                <div class="form-group" id="auto-sync-frequency-group">
+                    <label for="auto-sync-frequency">Fréquence</label>
+                    <select id="auto-sync-frequency">
+                      <option value="every_visit">À chaque visite de l'intranet</option>
+                      <option value="once_daily" selected>1 fois par jour maximum</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <section class="settings-section">
+                <h2>Notifications</h2>
+                <div class="form-group toggle-group">
+                    <label class="toggle-label">
+                      <span>Afficher les notifications de synchronisation</span>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="notifications-enabled" checked>
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Google Calendar Section -->
+            <section class="settings-section">
+                <h2>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                      <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Google Calendar
+                </h2>
+                <div class="form-group toggle-group">
+                    <label class="toggle-label">
+                      <span>Synchroniser avec Google Calendar</span>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="google-enabled">
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                </div>
+                <div class="service-connection" id="google-connection">
+                    <div class="connection-status">
+                      <span class="status-indicator" id="google-status-indicator"></span>
+                      <span id="google-status-text">Non connecté</span>
+                    </div>
+                    <button class="btn btn-connect" id="google-connect-btn">Connecter</button>
+                </div>
+                <div class="form-group" id="google-calendar-name-group">
+                    <label for="google-calendar-name">Nom du calendrier</label>
+                    <input type="text" id="google-calendar-name" placeholder="Epitech">
+                    <p class="form-hint">Un calendrier séparé sera créé avec ce nom</p>
+                </div>
+            </section>
+
+            <!-- Outlook Calendar Section -->
+            <section class="settings-section">
+                <h2>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                      <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Outlook Calendar
+                </h2>
+                <div class="form-group toggle-group">
+                    <label class="toggle-label">
+                      <span>Synchroniser avec Outlook Calendar</span>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="outlook-enabled">
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                </div>
+                <div class="service-connection" id="outlook-connection">
+                    <div class="connection-status">
+                      <span class="status-indicator" id="outlook-status-indicator"></span>
+                      <span id="outlook-status-text">Non connecté</span>
+                    </div>
+                    <button class="btn btn-connect" id="outlook-connect-btn">Connecter</button>
+                </div>
+                <div class="form-group" id="outlook-calendar-name-group">
+                    <label for="outlook-calendar-name">Nom du calendrier</label>
+                    <input type="text" id="outlook-calendar-name" placeholder="Epitech">
+                    <p class="form-hint">Un calendrier séparé sera créé avec ce nom</p>
+                </div>
+            </section>
+
+            <!-- ICS Export Section -->
+            <section class="settings-section">
+                <h2>Export ICS</h2>
+                <div class="form-group toggle-group">
+                    <label class="toggle-label">
+                      <span>Activer l'export ICS</span>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="ics-enabled" checked>
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                </div>
+                <p class="form-hint">Permet de télécharger un fichier .ics compatible avec Apple Calendar et autres applications</p>
+            </section>
+
+            <!-- Status Message -->
+            <div class="status-message hidden" id="status-message"></div>
+        </main>
+
+        <footer class="options-footer">
+            <button class="btn btn-primary" id="save-btn">Enregistrer</button>
+            <button class="btn btn-secondary" id="reset-btn">Réinitialiser</button>
+        </footer>
+    </div>
+
+    <script type="module" src="options.ts"></script>
+</body>
+</html>

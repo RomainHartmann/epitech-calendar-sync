@@ -1,0 +1,36 @@
+{
+    "name": "epitech-calendar-sync",
+    "version": "1.0.0",
+    "description": "Browser extension to sync Epitech intranet calendar to Google Calendar, Outlook, or ICS file",
+    "type": "module",
+    "scripts": {
+        "dev": "vite build --watch --mode development",
+        "build": "vite build",
+        "build:chrome": "vite build --mode chrome",
+        "build:firefox": "vite build --mode firefox",
+        "lint": "eslint src",
+        "typecheck": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.18.0",
+        "@types/chrome": "^0.0.287",
+        "@types/webextension-polyfill": "^0.12.1",
+        "eslint": "^9.18.0",
+        "typescript": "^5.7.0",
+        "typescript-eslint": "^8.21.0",
+        "vite": "^6.2.0",
+        "vite-plugin-web-extension": "^4.3.0",
+        "webextension-polyfill": "^0.12.0"
+    },
+    "keywords": [
+        "epitech",
+        "calendar",
+        "sync",
+        "google-calendar",
+        "outlook",
+        "ics",
+        "browser-extension"
+    ],
+    "author": "",
+    "license": "MIT"
+}

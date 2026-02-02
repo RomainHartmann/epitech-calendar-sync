@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epitech Calendar Sync</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <h1>Epitech Calendar Sync</h1>
+        </header>
+
+        <main class="popup-content">
+            <!-- Status Section -->
+            <section class="status-section">
+                <div class="status-item">
+                    <span class="status-label">Intranet</span>
+                    <span class="status-value" id="connection-status">
+                      <span class="status-dot disconnected"></span>
+                      <span class="status-text">Déconnecté</span>
+                    </span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Dernière sync</span>
+                    <span class="status-value" id="last-sync">Jamais</span>
+                </div>
+            </section>
+
+            <!-- Sync Progress -->
+            <div class="sync-progress hidden" id="sync-progress">
+                <div class="spinner"></div>
+                <span>Synchronisation en cours...</span>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message hidden" id="error-message"></div>
+
+            <!-- Actions Section -->
+            <section class="actions-section">
+                <button class="btn btn-primary" id="sync-btn" disabled>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 4v6h-6M1 20v-6h6"/>
+                      <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                    </svg>
+                    Synchroniser
+                </button>
+                <button class="btn btn-secondary" id="export-btn" disabled>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Exporter .ics
+                </button>
+            </section>
+
+            <!-- Auto Sync Toggle -->
+            <section class="toggle-section">
+                <label class="toggle-label">
+                    <span>Sync automatique</span>
+                    <div class="toggle-switch">
+                      <input type="checkbox" id="auto-sync-toggle">
+                      <span class="toggle-slider"></span>
+                    </div>
+                </label>
+            </section>
+
+            <!-- Services Status -->
+            <section class="services-section">
+                <h2>Services connectés</h2>
+                <div class="service-item">
+                    <span class="service-name">Google Calendar</span>
+                    <span class="service-status" id="google-status">Non configuré</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">Outlook</span>
+                    <span class="service-status" id="outlook-status">Non configuré</span>
+                </div>
+            </section>
+        </main>
+
+        <footer class="popup-footer">
+            <a href="#" id="options-link">Paramètres</a>
+        </footer>
+    </div>
+
+    <script type="module" src="popup.ts"></script>
+</body>
+</html>
