@@ -41,7 +41,7 @@ Extension navigateur (Chrome/Firefox) qui synchronise le calendrier de l'intrane
 ### Période de synchronisation
 
 - **Date de début** : Aujourd'hui ou date personnalisée
-- **Date de fin** : +1, +2, +3, ou +6 mois
+- **Date de fin** : +1, +6, ou +12 mois
 
 ### Services
 
@@ -119,6 +119,40 @@ epitech-calendar-sync/
 ├── tsconfig.json
 └── vite.config.ts
 ```
+
+## Publication sur les stores
+
+### Chrome Web Store
+
+```bash
+# 1. Build
+npm run build
+
+# 2. Créer le ZIP
+cd dist && zip -r ../epitech-calendar-sync-chrome.zip .
+```
+
+Upload `epitech-calendar-sync-chrome.zip` sur https://chrome.google.com/webstore/devconsole
+
+### Firefox Add-ons
+
+```bash
+# 1. Build
+npm run build
+
+# 2. Remplacer le manifest par la version Firefox
+cp src/manifest.firefox.json dist/manifest.json
+
+# 3. Créer le ZIP de l'extension
+cd dist && zip -r ../epitech-calendar-sync-firefox.zip .
+
+# 4. Créer le ZIP du code source (requis par Firefox)
+cd .. && zip -r epitech-calendar-sync-source.zip . -x "node_modules/*" -x "dist/*" -x ".git/*" -x "*.zip" -x ".DS_Store"
+```
+
+Upload les deux ZIPs sur https://addons.mozilla.org/developers/
+
+> **Note Firefox** : Google Calendar et Outlook ne sont pas disponibles sur Firefox (API `identity` non supportée). Seul l'export ICS fonctionne.
 
 ## Configuration OAuth (pour la publication)
 

@@ -1,0 +1,60 @@
+{
+    "manifest_version": 3,
+    "name": "Epitech Calendar Sync",
+    "version": "1.0.0",
+    "description": "Synchronise le calendrier de l'intranet Epitech vers Google Calendar, Outlook ou fichier ICS",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "epitech-calendar-sync@romainh.dev",
+            "strict_min_version": "109.0",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
+        }
+    },
+    "permissions": [
+        "storage",
+        "notifications",
+        "alarms"
+    ],
+    "host_permissions": [
+        "https://intra.epitech.eu/*",
+        "https://www.googleapis.com/*",
+        "https://graph.microsoft.com/*"
+    ],
+    "background": {
+        "scripts": ["background/index.js"],
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://intra.epitech.eu/*"
+            ],
+            "js": [
+                "content/detector.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_popup": "popup/index.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        },
+        "default_title": "Epitech Calendar Sync"
+    },
+    "options_ui": {
+        "page": "options/index.html",
+        "open_in_tab": true
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}

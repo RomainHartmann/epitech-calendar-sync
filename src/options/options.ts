@@ -36,6 +36,13 @@ const resetBtnEl = document.getElementById('reset-btn') as HTMLButtonElement;
 let currentSettings: ExtensionSettings | null = null;
 
 /**
+ * Detect if running in Firefox
+ */
+function isFirefox(): boolean {
+    return navigator.userAgent.includes('Firefox');
+}
+
+/**
  * Send message to background script
  */
 async function sendMessage<T>(message: ExtensionMessage): Promise<T> {
@@ -339,9 +346,28 @@ function setupEventListeners(): void {
 }
 
 /**
+ * Hide unsupported features on Firefox
+ */
+function hideFirefoxUnsupportedFeatures(): void {
+    if (isFirefox()) {
+        // Hide Google Calendar section (identity.getAuthToken not supported)
+        const googleSection = document.getElementById('google-section');
+        if (googleSection) {
+            googleSection.style.display = 'none';
+        }
+        // Hide Outlook Calendar section (identity API not supported)
+        const outlookSection = document.getElementById('outlook-section');
+        if (outlookSection) {
+            outlookSection.style.display = 'none';
+        }
+    }
+}
+
+/**
  * Initialize options page
  */
 async function init(): Promise<void> {
+    hideFirefoxUnsupportedFeatures();
     setupEventListeners();
     await loadSettings();
 }
