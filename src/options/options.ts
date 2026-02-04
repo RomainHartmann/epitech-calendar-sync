@@ -350,16 +350,13 @@ function setupEventListeners(): void {
  */
 function hideFirefoxUnsupportedFeatures(): void {
     if (isFirefox()) {
-        // Hide Google Calendar section (identity.getAuthToken not supported)
-        const googleSection = document.getElementById('google-section');
-        if (googleSection) {
-            googleSection.style.display = 'none';
-        }
-        // Hide Outlook Calendar section (identity API not supported)
-        const outlookSection = document.getElementById('outlook-section');
-        if (outlookSection) {
-            outlookSection.style.display = 'none';
-        }
+        const elementsToHide = ['google-section', 'outlook-section', 'auto-sync-section'];
+        elementsToHide.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.display = 'none';
+            }
+        });
     }
 }
 

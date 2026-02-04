@@ -228,10 +228,13 @@ function isFirefox(): boolean {
  */
 function hideFirefoxUnsupportedFeatures(): void {
     if (isFirefox()) {
-        const servicesSection = document.getElementById('services-section');
-        if (servicesSection) {
-            servicesSection.style.display = 'none';
-        }
+        const elementsToHide = ['services-section', 'auto-sync-section'];
+        elementsToHide.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.display = 'none';
+            }
+        });
     }
 }
 
