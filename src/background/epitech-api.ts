@@ -103,6 +103,13 @@ function formatRoomCode(code: string): string {
 }
 
 /**
+ * Clean activity title by removing unnecessary tags
+ */
+function cleanActivityTitle(title: string): string {
+    return title.replace(/\s*\[OBLIGATOIRE\]\s*/gi, ' ').trim();
+}
+
+/**
  * Format duration from minutes
  */
 function formatDuration(minutes: number): string {
@@ -171,6 +178,9 @@ export function transformEvent(raw: EpitechRawEvent, prefix: string): EpitechEve
     // Generate unique ID for the event
     const id = `epitech-${raw.codeacti}-${raw.codeevent}`;
 
+    // Clean activity title (remove [OBLIGATOIRE] tag)
+    const activityTitle = cleanActivityTitle(raw.acti_title);
+
     // Get real time slot (personal slot for RDV events)
     const timeSlot = getRealTimeSlot(raw);
 
@@ -183,7 +193,7 @@ export function transformEvent(raw: EpitechRawEvent, prefix: string): EpitechEve
     // Build description with details
     const descriptionParts: string[] = [];
     descriptionParts.push(`Module: ${raw.titlemodule}`);
-    descriptionParts.push(`Activity: ${raw.acti_title}`);
+    descriptionParts.push(`Activity: ${activityTitle}`);
 
     if (raw.prof_inst && raw.prof_inst.length > 0) {
         const instructors = raw.prof_inst.map((p) => p.title || p.login).join(', ');
@@ -217,9 +227,9 @@ export function transformEvent(raw: EpitechRawEvent, prefix: string): EpitechEve
     }
 
     // Build title (add warning if slot not reserved)
-    let title = `${prefix}${raw.acti_title}`;
+    let title = `${prefix}${activityTitle}`;
     if (timeSlot.isPersonalSlot === false) {
-        title = `${prefix}[CRÉNEAU NON RÉSERVÉ] ${raw.acti_title}`;
+        title = `${prefix}[CRÉNEAU NON RÉSERVÉ] ${activityTitle}`;
     }
 
     return {
@@ -236,7 +246,7 @@ export function transformEvent(raw: EpitechRawEvent, prefix: string): EpitechEve
         },
         activity: {
             code: raw.codeacti,
-            title: raw.acti_title,
+            title: activityTitle,
         },
         eventCode: raw.codeevent,
         semester: raw.semester,
