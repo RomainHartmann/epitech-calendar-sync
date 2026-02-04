@@ -217,9 +217,31 @@ function handleOptionsClick(e: Event): void {
 }
 
 /**
+ * Check if running on Firefox
+ */
+function isFirefox(): boolean {
+    return navigator.userAgent.includes('Firefox');
+}
+
+/**
+ * Hide unsupported features on Firefox
+ */
+function hideFirefoxUnsupportedFeatures(): void {
+    if (isFirefox()) {
+        const servicesSection = document.getElementById('services-section');
+        if (servicesSection) {
+            servicesSection.style.display = 'none';
+        }
+    }
+}
+
+/**
  * Initialize popup
  */
 async function init(): Promise<void> {
+    // Hide Chrome-only features on Firefox
+    hideFirefoxUnsupportedFeatures();
+
     // Add event listeners
     syncBtn.addEventListener('click', handleSync);
     exportBtn.addEventListener('click', handleExport);

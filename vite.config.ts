@@ -2,12 +2,12 @@ import { defineConfig } from 'vite';
 import webExtension from 'vite-plugin-web-extension';
 import { resolve } from 'path';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
     root: 'src',
     publicDir: resolve(__dirname, 'src/assets'),
     plugins: [
         webExtension({
-            manifest: 'manifest.json',
+            manifest: mode === 'firefox' ? 'manifest.firefox.json' : 'manifest.json',
             watchFilePaths: ['**/*'],
             webExtConfig: {
                 startUrl: 'https://intra.epitech.eu',
@@ -24,4 +24,4 @@ export default defineConfig({
         emptyOutDir: true,
         sourcemap: process.env.NODE_ENV === 'development',
     },
-});
+}));

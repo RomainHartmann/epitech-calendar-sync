@@ -11,8 +11,11 @@ const MS_AUTH_ENDPOINT = 'https://login.microsoftonline.com/common/oauth2/v2.0';
 
 // You need to register an app in Azure AD and get these values
 const MS_CLIENT_ID = 'bf945656-1897-444b-89bf-343504cf9c63';
-const MS_REDIRECT_URI = browser.identity.getRedirectURL();
 const MS_SCOPES = ['Calendars.ReadWrite', 'offline_access'];
+
+function getRedirectUri(): string {
+    return browser.identity?.getRedirectURL?.() || '';
+}
 
 interface OutlookCalendarEvent {
     id: string;
@@ -61,7 +64,7 @@ function getAuthUrl(): string {
     const params = new URLSearchParams({
         client_id: MS_CLIENT_ID,
         response_type: 'token',
-        redirect_uri: MS_REDIRECT_URI,
+        redirect_uri: getRedirectUri(),
         scope: MS_SCOPES.join(' '),
         response_mode: 'fragment',
     });
