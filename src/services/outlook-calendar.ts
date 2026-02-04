@@ -14,6 +14,10 @@ const MS_CLIENT_ID = 'bf945656-1897-444b-89bf-343504cf9c63';
 const MS_SCOPES = ['Calendars.ReadWrite', 'offline_access'];
 
 function getRedirectUri(): string {
+    // Try Chrome API first, then Firefox polyfill
+    if (typeof chrome !== 'undefined' && chrome.identity?.getRedirectURL) {
+        return chrome.identity.getRedirectURL();
+    }
     return browser.identity?.getRedirectURL?.() || '';
 }
 
