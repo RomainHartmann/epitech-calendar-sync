@@ -2,6 +2,8 @@
 
 Extension navigateur (Chrome/Firefox) qui synchronise le calendrier de l'intranet Epitech vers Google Calendar, Outlook, ou export fichier .ics.
 
+![Screenshot](screenshot.png)
+
 ## Fonctionnalités
 
 - **Synchronisation automatique** : Sync le calendrier à chaque visite de l'intranet ou 1x par jour
