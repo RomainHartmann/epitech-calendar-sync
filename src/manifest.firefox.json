@@ -2,13 +2,15 @@
     "manifest_version": 3,
     "name": "Epitech Calendar Sync",
     "version": "1.0.1",
-    "description": "Synchronise le calendrier de l'intranet Epitech vers Google Calendar, Outlook ou fichier ICS",
+    "description": "Synchronise le calendrier de l'intranet Epitech vers Google Calendar, Outlook ou fichier ICS - Open Source",
     "browser_specific_settings": {
         "gecko": {
             "id": "epitech-calendar-sync@romainh.dev",
             "strict_min_version": "109.0",
             "data_collection_permissions": {
-                "required": ["none"]
+                "required": [
+                    "none"
+                ]
             }
         }
     },
@@ -24,7 +26,9 @@
         "https://graph.microsoft.com/*"
     ],
     "background": {
-        "scripts": ["background/index.js"],
+        "scripts": [
+            "background/index.js"
+        ],
         "type": "module"
     },
     "content_scripts": [
