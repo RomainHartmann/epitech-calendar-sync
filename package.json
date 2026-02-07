@@ -1,6 +1,6 @@
 {
     "name": "epitech-calendar-sync",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Browser extension to sync Epitech intranet calendar to Google Calendar, Outlook, or ICS file",
     "type": "module",
     "scripts": {

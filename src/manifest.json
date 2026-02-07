@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Epitech Calendar Sync",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Synchronise le calendrier de l'intranet Epitech vers Google Calendar, Outlook ou fichier ICS - Open Source",
     "permissions": [
         "storage",
@@ -50,7 +50,7 @@
         "128": "icons/icon128.png"
     },
     "oauth2": {
-        "client_id": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+        "client_id": "515604891619-955clb54hi9acnfrhv9dl1rudkrd9gj8.apps.googleusercontent.com",
         "scopes": [
             "https://www.googleapis.com/auth/calendar"
         ]

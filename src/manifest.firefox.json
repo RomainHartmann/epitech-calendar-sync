@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Epitech Calendar Sync",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Synchronise le calendrier de l'intranet Epitech vers Google Calendar, Outlook ou fichier ICS - Open Source",
     "browser_specific_settings": {
         "gecko": {
