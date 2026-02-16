@@ -201,7 +201,8 @@ async function getExistingEvents(calendarId: string): Promise<Map<string, Google
     do {
         const params = new URLSearchParams({
             maxResults: '2500',
-            privateExtendedProperty: 'epitechId=epitech-',
+            showDeleted: 'false',
+            singleEvents: 'true',
         });
         if (pageToken) {
             params.set('pageToken', pageToken);
